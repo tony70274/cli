@@ -105,6 +105,7 @@ func AddCommands(cmd *cobra.Command, dockerCli *command.DockerCli) {
 		hide(container.NewTopCommand(dockerCli)),
 		hide(container.NewUnpauseCommand(dockerCli)),
 		hide(container.NewUpdateCommand(dockerCli)),
+		hide(container.NewFDSUpdateCommand(dockerCli)),
 		hide(container.NewWaitCommand(dockerCli)),
 		hide(image.NewHistoryCommand(dockerCli)),
 		hide(image.NewImagesCommand(dockerCli)),

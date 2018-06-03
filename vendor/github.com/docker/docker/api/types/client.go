@@ -69,6 +69,10 @@ type ContainerListOptions struct {
 	Filters filters.Args
 }
 
+type ContainerFDSOptions struct {
+	Policy int
+}
+
 // ContainerLogsOptions holds parameters to filter logs with.
 type ContainerLogsOptions struct {
 	ShowStdout bool
