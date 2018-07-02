@@ -2,14 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f8cb0cd3-5510-4272-8854-fdc72c44816d" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cli/command/container/FDSupdate.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/vendor/github.com/docker/docker/client/container_fds.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.dockerignore" beforeDir="false" afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.github/CODEOWNERS" beforeDir="false" afterPath="$PROJECT_DIR$/.github/CODEOWNERS" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.github/ISSUE_TEMPLATE.md" beforeDir="false" afterPath="$PROJECT_DIR$/.github/ISSUE_TEMPLATE.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.github/PULL_REQUEST_TEMPLATE.md" beforeDir="false" afterPath="$PROJECT_DIR$/.github/PULL_REQUEST_TEMPLATE.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.mailmap" beforeDir="false" afterPath="$PROJECT_DIR$/.mailmap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AUTHORS" beforeDir="false" afterPath="$PROJECT_DIR$/AUTHORS" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CONTRIBUTING.md" beforeDir="false" afterPath="$PROJECT_DIR$/CONTRIBUTING.md" afterDir="false" />
@@ -37,7 +35,6 @@
       <change beforePath="$PROJECT_DIR$/cli/command/checkpoint/testdata/checkpoint-list-with-options.golden" beforeDir="false" afterPath="$PROJECT_DIR$/cli/command/checkpoint/testdata/checkpoint-list-with-options.golden" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cli/command/cli.go" beforeDir="false" afterPath="$PROJECT_DIR$/cli/command/cli.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cli/command/cli_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/cli/command/cli_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cli/command/commands/commands.go" beforeDir="false" afterPath="$PROJECT_DIR$/cli/command/commands/commands.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cli/command/config/client_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/cli/command/config/client_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cli/command/config/cmd.go" beforeDir="false" afterPath="$PROJECT_DIR$/cli/command/config/cmd.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cli/command/config/create.go" beforeDir="false" afterPath="$PROJECT_DIR$/cli/command/config/create.go" afterDir="false" />
@@ -62,7 +59,6 @@
       <change beforePath="$PROJECT_DIR$/cli/command/container/attach.go" beforeDir="false" afterPath="$PROJECT_DIR$/cli/command/container/attach.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cli/command/container/attach_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/cli/command/container/attach_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cli/command/container/client_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/cli/command/container/client_test.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cli/command/container/cmd.go" beforeDir="false" afterPath="$PROJECT_DIR$/cli/command/container/cmd.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cli/command/container/commit.go" beforeDir="false" afterPath="$PROJECT_DIR$/cli/command/container/commit.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cli/command/container/cp.go" beforeDir="false" afterPath="$PROJECT_DIR$/cli/command/container/cp.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cli/command/container/cp_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/cli/command/container/cp_test.go" afterDir="false" />
@@ -1196,7 +1192,6 @@
       <change beforePath="$PROJECT_DIR$/vendor/github.com/docker/docker/api/common_windows.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/github.com/docker/docker/api/common_windows.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/github.com/docker/docker/api/types/auth.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/github.com/docker/docker/api/types/auth.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/github.com/docker/docker/api/types/blkiodev/blkio.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/github.com/docker/docker/api/types/blkiodev/blkio.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/github.com/docker/docker/api/types/client.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/github.com/docker/docker/api/types/client.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/github.com/docker/docker/api/types/configs.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/github.com/docker/docker/api/types/configs.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/github.com/docker/docker/api/types/container/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/github.com/docker/docker/api/types/container/config.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/github.com/docker/docker/api/types/container/container_changes.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/github.com/docker/docker/api/types/container/container_changes.go" afterDir="false" />
@@ -1311,7 +1306,6 @@
       <change beforePath="$PROJECT_DIR$/vendor/github.com/docker/docker/client/image_search.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/github.com/docker/docker/client/image_search.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/github.com/docker/docker/client/image_tag.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/github.com/docker/docker/client/image_tag.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/github.com/docker/docker/client/info.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/github.com/docker/docker/client/info.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/github.com/docker/docker/client/interface.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/github.com/docker/docker/client/interface.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/github.com/docker/docker/client/interface_experimental.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/github.com/docker/docker/client/interface_experimental.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/github.com/docker/docker/client/interface_stable.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/github.com/docker/docker/client/interface_stable.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/github.com/docker/docker/client/login.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/github.com/docker/docker/client/login.go" afterDir="false" />
@@ -3345,116 +3339,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="FDSupdate.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cli/command/container/FDSupdate.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="417">
-              <caret line="104" column="41" selection-start-line="104" selection-start-column="41" selection-end-line="104" selection-end-column="41" />
-              <folding>
-                <element signature="e#19#365#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="list.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cli/command/container/list.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="111" column="49" selection-start-line="111" selection-start-column="49" selection-end-line="111" selection-end-column="49" />
-              <folding>
-                <element signature="e#19#296#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="interface.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vendor/github.com/docker/docker/client/interface.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="706">
-              <caret line="77" column="16" selection-start-line="77" selection-start-column="16" selection-end-line="77" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="container_list.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vendor/github.com/docker/docker/client/container_list.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-              <folding>
-                <element signature="e#60#205#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="container_fds.go" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/vendor/github.com/docker/docker/client/container_fds.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-              <folding>
-                <element signature="e#60#205#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="client.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vendor/github.com/docker/docker/api/types/client.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="311">
-              <caret line="72" column="14" selection-start-line="72" selection-start-column="14" selection-end-line="72" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="stats.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cli/command/container/stats.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="645">
-              <caret line="57" column="31" selection-start-line="57" selection-start-column="31" selection-end-line="57" selection-end-column="31" />
-              <folding>
-                <element signature="e#19#374#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="commands.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cli/command/commands/commands.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="107" column="29" selection-start-line="107" selection-start-column="29" selection-end-line="107" selection-end-column="29" />
-              <folding>
-                <element signature="e#18#809#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="cli.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cli/command/cli.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="123">
-              <caret line="297" column="12" selection-start-line="297" selection-start-column="12" selection-end-line="297" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="cmd.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cli/command/container/cmd.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="9" column="64" selection-start-line="9" selection-start-column="64" selection-end-line="9" selection-end-column="64" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -3510,7 +3395,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -3568,6 +3452,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -3598,7 +3483,7 @@
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24305555" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24236111" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Database" order="3" />
@@ -3625,13 +3510,80 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/cli/command/container/FDSupdate.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1350">
+          <caret line="104" column="41" selection-start-line="104" selection-start-column="41" selection-end-line="104" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cli/command/container/list.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1500">
+          <caret line="111" column="49" selection-start-line="111" selection-start-column="49" selection-end-line="111" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/github.com/docker/docker/client/interface.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="915">
+          <caret line="77" column="16" selection-start-line="77" selection-start-column="16" selection-end-line="77" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/github.com/docker/docker/client/container_list.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/github.com/docker/docker/api/types/client.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="960">
+          <caret line="72" column="14" selection-start-line="72" selection-start-column="14" selection-end-line="72" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cli/command/container/stats.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="615">
+          <caret line="57" column="31" selection-start-line="57" selection-start-column="31" selection-end-line="57" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cli/command/commands/commands.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1290">
+          <caret line="107" column="29" selection-start-line="107" selection-start-column="29" selection-end-line="107" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cli/command/cli.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4020">
+          <caret line="297" column="12" selection-start-line="297" selection-start-column="12" selection-end-line="297" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cli/command/container/cmd.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="9" column="64" selection-start-line="9" selection-start-column="64" selection-end-line="9" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/github.com/docker/docker/client/container_fds.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/cli/command/container/update.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
           <caret line="42" column="64" lean-forward="true" selection-start-line="42" selection-start-column="64" selection-end-line="42" selection-end-column="64" />
-          <folding>
-            <element signature="e#19#269#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3646,9 +3598,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1980">
           <caret line="139" column="25" lean-forward="true" selection-start-line="139" selection-start-column="10" selection-end-line="139" selection-end-column="30" />
-          <folding>
-            <element signature="e#13#130#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3656,9 +3605,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1200">
           <caret line="91" column="23" lean-forward="true" selection-start-line="91" selection-start-column="23" selection-end-line="91" selection-end-column="23" />
-          <folding>
-            <element signature="e#19#365#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3680,9 +3626,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1290">
           <caret line="107" column="29" selection-start-line="107" selection-start-column="29" selection-end-line="107" selection-end-column="29" />
-          <folding>
-            <element signature="e#18#809#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3690,9 +3633,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="600">
           <caret line="40" column="26" lean-forward="true" selection-start-line="40" selection-start-column="26" selection-end-line="40" selection-end-column="26" />
-          <folding>
-            <element signature="e#19#269#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3717,9 +3657,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
           <caret line="42" column="64" selection-start-line="42" selection-start-column="64" selection-end-line="42" selection-end-column="64" />
-          <folding>
-            <element signature="e#19#269#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3755,9 +3692,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1980">
           <caret line="139" column="25" selection-start-line="139" selection-start-column="10" selection-end-line="139" selection-end-column="30" />
-          <folding>
-            <element signature="e#13#130#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3773,17 +3707,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cli/command/commands/commands.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
+        <state relative-caret-position="1290">
           <caret line="107" column="29" selection-start-line="107" selection-start-column="29" selection-end-line="107" selection-end-column="29" />
-          <folding>
-            <element signature="e#18#809#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cli/command/cli.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
+        <state relative-caret-position="4020">
           <caret line="297" column="12" selection-start-line="297" selection-start-column="12" selection-end-line="297" selection-end-column="12" />
         </state>
       </provider>
@@ -3797,34 +3728,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/vendor/github.com/docker/docker/api/types/client.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
+        <state relative-caret-position="960">
           <caret line="72" column="14" selection-start-line="72" selection-start-column="14" selection-end-line="72" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cli/command/container/stats.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
+        <state relative-caret-position="615">
           <caret line="57" column="31" selection-start-line="57" selection-start-column="31" selection-end-line="57" selection-end-column="31" />
-          <folding>
-            <element signature="e#19#374#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cli/command/container/list.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
+        <state relative-caret-position="1500">
           <caret line="111" column="49" selection-start-line="111" selection-start-column="49" selection-end-line="111" selection-end-column="49" />
-          <folding>
-            <element signature="e#19#296#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vendor/github.com/docker/docker/client/interface.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="706">
+        <state relative-caret-position="915">
           <caret line="77" column="16" selection-start-line="77" selection-start-column="16" selection-end-line="77" selection-end-column="16" />
         </state>
       </provider>
@@ -3833,29 +3758,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
           <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-          <folding>
-            <element signature="e#60#205#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cli/command/container/FDSupdate.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
+        <state relative-caret-position="1350">
           <caret line="104" column="41" selection-start-line="104" selection-start-column="41" selection-end-line="104" selection-end-column="41" />
-          <folding>
-            <element signature="e#19#365#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vendor/github.com/docker/docker/client/container_fds.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
+        <state relative-caret-position="240">
           <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-          <folding>
-            <element signature="e#60#205#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
