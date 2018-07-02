@@ -21,9 +21,15 @@ func (cli *Client) ContainerFDS(ctx context.Context, options types.ContainerFDSO
 
 	println("In the func of ContainerFDS")
 
-	_, err := cli.post(ctx, "/containers/fds", query, nil,nil)
+	//_, err := cli.post(ctx, "/containers/fds", query, nil,nil)
+	resp, err := cli.get(ctx,"/containers/resource",query,nil)
 	if err != nil {
 		return err
+	}
+	if resp != nil {
+		println("get resp!!")
+	}else{
+		println("get error")
 	}
 
 return nil
