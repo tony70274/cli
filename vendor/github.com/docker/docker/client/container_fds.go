@@ -11,7 +11,7 @@ import (
 )
 
 // ContainerList returns the list of containers in the docker host.
-func (cli *Client) ContainerFDS(ctx context.Context, options types.ContainerFDSOptions) (error,error) {
+func (cli *Client) ContainerFDS(ctx context.Context, options types.ContainerFDSOptions) (error) {
 	query := url.Values{}
 
 	if options.Policy != 0 {
@@ -24,14 +24,14 @@ func (cli *Client) ContainerFDS(ctx context.Context, options types.ContainerFDSO
 	//_, err := cli.post(ctx, "/containers/fds", query, nil,nil)
 	_, err := cli.get(ctx,"/containers/resource",query,nil)
 	if err != nil {
-		return nil,err
+		return err
 	}else {
 		println("POST OK!")
 	}
 	//var containers []container.Container
 	//err = json.NewDecoder(resp.body).Decode(&containers)
 	//ensureReaderClosed(resp)
-	return nil, err
+	return  err
 
 
 }
