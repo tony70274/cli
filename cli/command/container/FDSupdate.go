@@ -3,7 +3,6 @@ package container
 import (
 	"fmt"
 	//"strings"
-
 	"github.com/docker/cli/cli"
 	"github.com/docker/cli/cli/command"
 	"github.com/docker/docker/api/types"
@@ -85,7 +84,7 @@ func NewFDSUpdateCommand(dockerCli command.Cli) *cobra.Command {
 }
 
 func runFDSupdate(dockerCli command.Cli, options *allocOptions) error {
-
+	client := dockerCli.Client()
 	ctx := context.Background()
 	if options.nFlag == 0 {
 		options.policy = 1
@@ -97,13 +96,25 @@ func runFDSupdate(dockerCli command.Cli, options *allocOptions) error {
 	}else{
 		println(FDSOption.Policy)
 	}
+	cs, err := dockerCli.Client().ContainerList(ctx, &types.ContainerListOptions{})
+	if err != nil {
+		println("Get Container List Error")
+	}else {
+		println("Get Container List  OK")
+	}
+	for _, container := range cs {
+		containerInfo := client.ContainerInspect(ctx,container.ID)
+		println(containerInfo.ContainerJSONBase.ID)
 
+	}
+/*
 	containers, err = dockerCli.Client().ContainerFDS(ctx, *FDSOption)
 	if err != nil {
 		panic(err)
 	}else{
 		println("func of ContainerFDS is OK!!!")
 	}
+*/
 /*
 	for _,cs :=  range  runningContainer {
 		print(cs.ID)
@@ -112,6 +123,7 @@ func runFDSupdate(dockerCli command.Cli, options *allocOptions) error {
 
 */
 	fmt.Print("Add Command is OK!!!")
+
 	return nil
 }
 
