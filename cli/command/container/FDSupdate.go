@@ -95,10 +95,10 @@ func runFDSupdate(dockerCli command.Cli, options *allocOptions) error {
 	if err != nil {
 		panic("Error!!")
 	}else{
-		print(FDSOption.Policy)
+		println(FDSOption.Policy)
 	}
 
-	err = dockerCli.Client().ContainerFDS(ctx, *FDSOption)
+	containers, err = dockerCli.Client().ContainerFDS(ctx, *FDSOption)
 	if err != nil {
 		panic(err)
 	}else{
