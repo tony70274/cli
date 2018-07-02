@@ -96,7 +96,7 @@ func runFDSupdate(dockerCli command.Cli, options *allocOptions) error {
 	}else{
 		println(FDSOption.Policy)
 	}
-	cs, err := dockerCli.Client().ContainerList(ctx, &types.ContainerListOptions{})
+	cs, err := dockerCli.Client().ContainerList(ctx, types.ContainerListOptions{})
 	if err != nil {
 		println("Get Container List Error")
 	}else {
