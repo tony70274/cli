@@ -11,7 +11,7 @@ import (
 )
 
 // ContainerList returns the list of containers in the docker host.
-func (cli *Client) ContainerFDS(ctx context.Context, options types.ContainerFDSOptions) ([]container.Container,error) {
+func (cli *Client) ContainerFDS(ctx context.Context, options types.ContainerFDSOptions) (error,error) {
 	query := url.Values{}
 
 	if options.Policy != 0 {

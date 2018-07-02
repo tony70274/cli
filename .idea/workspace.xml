@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f8cb0cd3-5510-4272-8854-fdc72c44816d" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/cli/command/container/FDSupdate.go" beforeDir="false" afterPath="$PROJECT_DIR$/cli/command/container/FDSupdate.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/github.com/docker/docker/client/container_fds.go" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/github.com/docker/docker/client/container_fds.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -55,8 +54,8 @@
           <file leaf-file-name="container_fds.go" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/vendor/github.com/docker/docker/client/container_fds.go">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="342">
-                  <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
+                <state relative-caret-position="285">
+                  <caret line="21" column="42" lean-forward="true" selection-start-line="21" selection-start-column="42" selection-end-line="21" selection-end-column="42" />
                   <folding>
                     <element signature="e#60#209#0" expanded="true" />
                   </folding>
@@ -107,8 +106,8 @@
         <option value="$PROJECT_DIR$/cli/command/commands/commands.go" />
         <option value="$PROJECT_DIR$/vendor/github.com/docker/docker/api/types/client.go" />
         <option value="$PROJECT_DIR$/vendor/github.com/docker/docker/client/interface.go" />
-        <option value="$PROJECT_DIR$/vendor/github.com/docker/docker/client/container_fds.go" />
         <option value="$PROJECT_DIR$/cli/command/container/FDSupdate.go" />
+        <option value="$PROJECT_DIR$/vendor/github.com/docker/docker/client/container_fds.go" />
       </list>
     </option>
   </component>
@@ -529,20 +528,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/github.com/docker/docker/client/container_fds.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-          <folding>
-            <element signature="e#60#209#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/github.com/docker/docker/client/container_list.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
           <caret line="30" column="5" lean-forward="true" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/github.com/docker/docker/client/container_fds.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="21" column="42" lean-forward="true" selection-start-line="21" selection-start-column="42" selection-end-line="21" selection-end-column="42" />
+          <folding>
+            <element signature="e#60#209#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
