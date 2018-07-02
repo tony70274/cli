@@ -103,7 +103,10 @@ func runFDSupdate(dockerCli command.Cli, options *allocOptions) error {
 		println("Get Container List  OK")
 	}
 	for _, container := range cs {
-		containerInfo := client.ContainerInspect(ctx,container.ID)
+		containerInfo, err := client.ContainerInspect(ctx,container.ID)
+		if err != nil {
+			println("Inspect  Error")
+		}
 		println(containerInfo.ContainerJSONBase.ID)
 
 	}
