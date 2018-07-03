@@ -13,6 +13,12 @@ import (
 	"github.com/spf13/cobra"
 	//"io/ioutil"
 	"context"
+	//"go/ast"
+	//"github.com/docker/docker/client"
+	"log"
+	"encoding/json"
+	"text/tabwriter"
+	"os"
 )
 /*
 type updateOptions struct {
@@ -36,6 +42,13 @@ type updateOptions struct {
 	containers []string
 }
 */
+type FDSContainer struct{
+	ID	string
+	containerStats    types.StatsJSON
+	//resource	container.Resources
+	Period	int64
+	Quota	int64
+}
 type allocOptions struct {
 	nFlag int
 	policy int
@@ -44,6 +57,7 @@ type allocOptions struct {
 func NewFDSUpdateCommand(dockerCli command.Cli) *cobra.Command {
 //	var options updateOptions
 	var options allocOptions
+
 
 
 
@@ -85,7 +99,9 @@ func NewFDSUpdateCommand(dockerCli command.Cli) *cobra.Command {
 
 func runFDSupdate(dockerCli command.Cli, options *allocOptions) error {
 	client := dockerCli.Client()
+
 	ctx := context.Background()
+	var fdsContainer []FDSContainer
 	if options.nFlag == 0 {
 		options.policy = 1
 	}
@@ -103,13 +119,21 @@ func runFDSupdate(dockerCli command.Cli, options *allocOptions) error {
 		println("Get Container List  OK")
 	}
 	for _, container := range cs {
+		var tmpContainer FDSContainer
 		containerInfo, err := client.ContainerInspect(ctx,container.ID)
 		if err != nil {
 			println("Inspect  Error")
 		}
-		println(containerInfo.ContainerJSONBase.ID)
+		tmpContainer.ID = containerInfo.ContainerJSONBase.ID
+		tmpContainer.Period = containerInfo.ContainerJSONBase.HostConfig.Resources.CPUPeriod
+		tmpContainer.Quota = containerInfo.ContainerJSONBase.HostConfig.Resources.CPUQuota
+		tmpContainer.containerStats = initContainerStats(tmpContainer,dockerCli)
+		println(tmpContainer.containerStats.PreCPUStats.CPUUsage.TotalUsage)
+		fdsContainer = append(fdsContainer,tmpContainer)
+
 
 	}
+	showInfo(fdsContainer)
 /*
 	containers, err = dockerCli.Client().ContainerFDS(ctx, *FDSOption)
 	if err != nil {
@@ -125,7 +149,7 @@ func runFDSupdate(dockerCli command.Cli, options *allocOptions) error {
 	}
 
 */
-	fmt.Print("Add Command is OK!!!")
+	fmt.Println("Add Command is OK!!!")
 
 	return nil
 }
@@ -137,6 +161,39 @@ func buildContainerFDSOptions(opts *allocOptions) (*types.ContainerFDSOptions, e
 
 	return options, nil
 }
+func initContainerStats(c FDSContainer, cli command.Cli) types.StatsJSON {
+	resp, err := cli.Client().ContainerStats(context.Background(), c.ID, false)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer resp.Body.Close()
+	dec := json.NewDecoder(resp.Body)
+	//var status types.StatsJSON
+	if err := dec.Decode(&c.containerStats); err != nil {
+		log.Fatal(err)
+	}
+	return c.containerStats
+}
+
+func showInfo(containers []FDSContainer) {
+	//      cleanScreen()
+	w := tabwriter.NewWriter(os.Stdout, 12, 1, 3, ' ', 0)
+	fmt.Fprint(w, "Name\tCPU%\tAVG\tQuota\tPeriod\tMax_CPU\n")
+	for i := 0; i < len(containers); i++ {
+		fmt.Fprintf(w, "%s\t%d\t%d\n",
+			containers[i].containerStats.Name,
+			containers[i].Quota,
+			containers[i].Period,
+		)
+
+	}
+	if err := w.Flush(); err != nil {
+		log.Fatal(err)
+		return
+	}
+
+}
+
 /*
 func runUpdate(dockerCli command.Cli, options *updateOptions) error {
 	var err error
