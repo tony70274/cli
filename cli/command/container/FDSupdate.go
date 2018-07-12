@@ -19,7 +19,7 @@ import (
 	"encoding/json"
 	"text/tabwriter"
 	"os"
-	"time"
+	//"time"
 	//"github.com/containerd/cgroups"
 )
 /*
@@ -44,10 +44,12 @@ type updateOptions struct {
 	containers []string
 }
 */
+
+var y int
+
 type FDSContainer struct{
 	ID	string
 	containerStats    types.StatsJSON
-	Cstats types.ContainerStats
 	//resource	container.Resources
 	Period	int64
 	Quota	int64
@@ -63,6 +65,9 @@ type allocOptions struct {
 func NewFDSUpdateCommand(dockerCli command.Cli) *cobra.Command {
 //	var options updateOptions
 	var options allocOptions
+	y = 0
+
+
 
 
 
@@ -133,19 +138,17 @@ func runFDSupdate(dockerCli command.Cli, options *allocOptions) error {
 		tmpContainer.ID = containerInfo.ContainerJSONBase.ID
 		tmpContainer.Period = containerInfo.ContainerJSONBase.HostConfig.Resources.CPUPeriod
 		tmpContainer.Quota = containerInfo.ContainerJSONBase.HostConfig.Resources.CPUQuota
-		tmpContainer.Cstats, err = dockerCli.Client().ContainerStats(ctx,tmpContainer.ID,true)
-		println(tmpContainer.Cstats.StatsEntry.ID)
-		//tmpContainer.containerStats = initContainerStats(tmpContainer,dockerCli)
-		//println(tmpContainer.containerStats.PreCPUStats.CPUUsage.TotalUsage)
+		tmpContainer.containerStats = initContainerStats(tmpContainer,dockerCli)
+		println(tmpContainer.containerStats.PreCPUStats.CPUUsage.TotalUsage)
 		fdsContainer = append(fdsContainer,tmpContainer)
 
 
 	}
-	/*for range time.Tick(time.Millisecond * 1000) {
+	for range time.Tick(time.Millisecond * 1000) {
 		fmt.Fprint(dockerCli.Out(), "\033[2J")//clean screen
 		fmt.Fprint(dockerCli.Out(), "\033[H")
 		showInfo(fdsContainer)
-	}*/
+	}
 	//dockerCli.Client().ContainerStats()
 	/*
 	containers, err = dockerCli.Client().ContainerFDS(ctx, *FDSOption)
@@ -193,10 +196,12 @@ func showInfo(containers []FDSContainer) {
 	w := tabwriter.NewWriter(os.Stdout, 12, 1, 3, ' ', 0)
 	fmt.Fprint(w, "Name\tCPU%\tAVG\tQuota\tPeriod\tMax_CPU\n")
 	for i := 0; i < len(containers); i++ {
-		fmt.Fprintf(w, "%s\t%d\t%d\n",
+		fmt.Fprintf(w, "%s\t%d\t%d\t%d\t%d\n",
 			containers[i].containerStats.Name,
 			containers[i].Quota,
 			containers[i].Period,
+			containers[i].containerStats.CPUStats.CPUUsage.TotalUsage,
+			y++,
 		)
 
 	}
