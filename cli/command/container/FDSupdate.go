@@ -177,7 +177,7 @@ func buildContainerFDSOptions(opts *allocOptions) (*types.ContainerFDSOptions, e
 	return options, nil
 }
 func initContainerStats(c FDSContainer, cli command.Cli) types.StatsJSON {
-	resp, err := cli.Client().ContainerStats(context.Background(), c.ID, false)
+	resp, err := cli.Client().ContainerStats(context.Background(), c.ID, true)
 	if err != nil {
 		log.Fatal(err)
 	}
