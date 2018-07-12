@@ -19,6 +19,8 @@ import (
 	"encoding/json"
 	"text/tabwriter"
 	"os"
+	"time"
+	//"github.com/containerd/cgroups"
 )
 /*
 type updateOptions struct {
@@ -45,9 +47,13 @@ type updateOptions struct {
 type FDSContainer struct{
 	ID	string
 	containerStats    types.StatsJSON
+	Cstats types.ContainerStats
 	//resource	container.Resources
 	Period	int64
 	Quota	int64
+	previousCPU    uint64
+	previousSystem uint64
+	cpuPercent float64
 }
 type allocOptions struct {
 	nFlag int
@@ -127,14 +133,21 @@ func runFDSupdate(dockerCli command.Cli, options *allocOptions) error {
 		tmpContainer.ID = containerInfo.ContainerJSONBase.ID
 		tmpContainer.Period = containerInfo.ContainerJSONBase.HostConfig.Resources.CPUPeriod
 		tmpContainer.Quota = containerInfo.ContainerJSONBase.HostConfig.Resources.CPUQuota
-		tmpContainer.containerStats = initContainerStats(tmpContainer,dockerCli)
-		println(tmpContainer.containerStats.PreCPUStats.CPUUsage.TotalUsage)
+		tmpContainer.Cstats, err = dockerCli.Client().ContainerStats(ctx,tmpContainer.ID,true)
+		println(tmpContainer.Cstats.StatsEntry.ID)
+		//tmpContainer.containerStats = initContainerStats(tmpContainer,dockerCli)
+		//println(tmpContainer.containerStats.PreCPUStats.CPUUsage.TotalUsage)
 		fdsContainer = append(fdsContainer,tmpContainer)
 
 
 	}
-	showInfo(fdsContainer)
-/*
+	/*for range time.Tick(time.Millisecond * 1000) {
+		fmt.Fprint(dockerCli.Out(), "\033[2J")//clean screen
+		fmt.Fprint(dockerCli.Out(), "\033[H")
+		showInfo(fdsContainer)
+	}*/
+	//dockerCli.Client().ContainerStats()
+	/*
 	containers, err = dockerCli.Client().ContainerFDS(ctx, *FDSOption)
 	if err != nil {
 		panic(err)
@@ -193,6 +206,10 @@ func showInfo(containers []FDSContainer) {
 	}
 
 }
+
+
+
+
 
 /*
 func runUpdate(dockerCli command.Cli, options *updateOptions) error {
