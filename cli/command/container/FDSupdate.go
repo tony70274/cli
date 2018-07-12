@@ -141,11 +141,11 @@ func runFDSupdate(dockerCli command.Cli, options *allocOptions) error {
 
 
 	}
-	for range time.Tick(time.Millisecond * 1000) {
+	/*for range time.Tick(time.Millisecond * 1000) {
 		fmt.Fprint(dockerCli.Out(), "\033[2J")//clean screen
 		fmt.Fprint(dockerCli.Out(), "\033[H")
 		showInfo(fdsContainer)
-	}
+	}*/
 	//dockerCli.Client().ContainerStats()
 	/*
 	containers, err = dockerCli.Client().ContainerFDS(ctx, *FDSOption)
