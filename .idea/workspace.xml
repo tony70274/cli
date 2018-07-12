@@ -16,8 +16,18 @@
       <file leaf-file-name="FDSupdate.go" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cli/command/container/FDSupdate.go">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="345">
               <caret line="134" column="24" lean-forward="true" selection-start-line="134" selection-start-column="24" selection-end-line="134" selection-end-column="24" />
+=======
+<<<<<<< HEAD
+            <state relative-caret-position="534">
+              <caret line="183" column="46" lean-forward="true" selection-start-line="183" selection-start-column="46" selection-end-line="183" selection-end-column="46" />
+=======
+            <state relative-caret-position="375">
+              <caret line="136" column="36" lean-forward="true" selection-start-line="136" selection-start-column="36" selection-end-line="136" selection-end-column="36" />
+>>>>>>> d4c25e44f50483550b6b0fdcae497645c031ee78
+>>>>>>> 0d3a7cda8ad689b161935d51053f9ba7fcb672ed
               <folding>
                 <element signature="e#19#476#0" expanded="true" />
               </folding>
@@ -476,8 +486,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cli/command/container/FDSupdate.go">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="345">
           <caret line="134" column="24" lean-forward="true" selection-start-line="134" selection-start-column="24" selection-end-line="134" selection-end-column="24" />
+=======
+<<<<<<< HEAD
+        <state relative-caret-position="534">
+          <caret line="183" column="46" lean-forward="true" selection-start-line="183" selection-start-column="46" selection-end-line="183" selection-end-column="46" />
+=======
+        <state relative-caret-position="375">
+          <caret line="136" column="36" lean-forward="true" selection-start-line="136" selection-start-column="36" selection-end-line="136" selection-end-column="36" />
+>>>>>>> d4c25e44f50483550b6b0fdcae497645c031ee78
+>>>>>>> 0d3a7cda8ad689b161935d51053f9ba7fcb672ed
           <folding>
             <element signature="e#19#476#0" expanded="true" />
           </folding>
