@@ -7,7 +7,7 @@ import (
 	"github.com/docker/cli/cli/command"
 	"github.com/docker/docker/api/types"
 	//"github.com/docker/cli/opts"
-	//containertypes "github.com/docker/docker/api/types/container"
+	containertypes "github.com/docker/docker/api/types/container"
 	//"github.com/docker/docker/api/types/container"
 	//"github.com/pkg/errors"
 	"github.com/spf13/cobra"
@@ -23,6 +23,7 @@ import (
 	//"github.com/containerd/cgroups"
 	"os/exec"
 	"strings"
+	"strconv"
 )
 /*
 type updateOptions struct {
@@ -291,7 +292,7 @@ func checkUpdateInfo (containers []FDSContainer){
 		}else{
 			containers[i].isNeedCPU = true
 			needCPUContainer_num++
-			fmt.Print("NeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeD")
+			fmt.Println("NeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeD")
 
 		}
 
@@ -306,11 +307,55 @@ func checkUpdateInfo (containers []FDSContainer){
 		}
 	}
 
+}
+
+func DoUpdate(dockerCli command.Cli,containers []FDSContainer){
+	ctx := context.Background()
+
+	for i := 0; i < len(containers); i++ {
+		var restartPolicy containertypes.RestartPolicy
+		if strings.Contains(containers[i].containerStats.Name, "rt") {
+			continue
+		}
+		allocPeriod := containers[i].Period
+		//allocQuota := float64(allocPeriod) * containers[i].needUsage
+		allocQuota := containers[i].Quota + 100
+		if allocQuota > 1000 {
+			resources := containertypes.Resources{
+				CPUPeriod:          allocPeriod,
+				CPUQuota:           int64(allocQuota),
+			}
+			updateConfig := containertypes.UpdateConfig{
+				Resources:     resources,
+				RestartPolicy: restartPolicy,
+			}
+			_, err := dockerCli.Client().ContainerUpdate(ctx, containers[i].ID, updateConfig)
+			if err != nil {
+				fmt.Println("Update Error")
+			}else{
+				fmt.Println("Update OK!!!")
+				containers[i].Quota = int64(allocQuota)
+				containers[i].isNeedCPU = false
+
+			}
+
+
+
+		}
+
+
+
+
+	}
 
 
 
 
 
+}
+func Round(v float64) float64 {
+	x, _ := strconv.ParseFloat(fmt.Sprintf("%.3f",v),3)
+	return x
 }
 
 
