@@ -22,6 +22,7 @@ import (
 	"time"
 	//"github.com/containerd/cgroups"
 	"os/exec"
+	"strings"
 )
 /*
 type updateOptions struct {
@@ -58,7 +59,9 @@ type FDSContainer struct{
 	previousSystem uint64
 	cpuPercent float64
 	historyCPUPer     []float64
-	avgCPU float64
+	avgCPUPer float64
+	needUsage float64
+	isNeedCPU bool
 }
 type allocOptions struct {
 	nFlag int
@@ -148,8 +151,7 @@ func runFDSupdate(dockerCli command.Cli, options *allocOptions) error {
 
 	}
 	for range time.Tick(time.Millisecond * 1000) {
-		//fmt.Fprint(dockerCli.Out(), "\033[2J")//clean screen
-		//fmt.Fprint(dockerCli.Out(), "\033[H")
+		var count=0
 		for i := 0 ; i < len(cs) ; i++ {
 			fdsContainer[i].previousCPU = fdsContainer[i].containerStats.CPUStats.CPUUsage.TotalUsage
 			fdsContainer[i].previousSystem = fdsContainer[i].containerStats.CPUStats.SystemUsage
@@ -157,9 +159,13 @@ func runFDSupdate(dockerCli command.Cli, options *allocOptions) error {
 			fdsContainer[i].cpuPercent = calculateCPUPercentUnix(fdsContainer[i].previousCPU,fdsContainer[i].previousSystem,&fdsContainer[i].containerStats)
 			fdsContainer[i].historyCPUPer = append(fdsContainer[i].historyCPUPer,fdsContainer[i].cpuPercent)
 			if len(fdsContainer[i].historyCPUPer) >=5 {
-				fdsContainer[i].avgCPU = checkAvgCPU(fdsContainer[i].historyCPUPer)
+				fdsContainer[i].avgCPUPer = checkAvgCPU(fdsContainer[i].historyCPUPer)
 				fdsContainer[i].historyCPUPer = nil
 			}
+		}
+		count+=1
+		if count%5 == 0{
+			checkUpdateInfo(fdsContainer)
 		}
 		showInfo(fdsContainer)
 
@@ -214,7 +220,7 @@ func showInfo(containers []FDSContainer) {
 		fmt.Fprintf(w, "%s\t%.2f\t%.2f\t%d\t%d\t%.2f\n",
 			containers[i].containerStats.Name,
 			containers[i].cpuPercent,
-			containers[i].avgCPU,
+			containers[i].avgCPUPer,
 			containers[i].Quota,
 			containers[i].Period,
 			containers[i].maxCPUUsage,
@@ -243,6 +249,64 @@ func checkAvgCPU(u []float64)float64{
 		total+=v
 	}
 	return (total / float64(5))
+
+
+}
+
+func checkUpdateInfo (containers []FDSContainer){
+	var(
+		maxCPUUsage = 1.00
+		totalCPUUsage = 0.00
+		rtContainerUsage = 0.00
+		remainingCPUUsage = 0.00
+		rtContainer_num = 0
+		needCPUContainer_num = 0
+
+
+	)
+
+	for _, c := range containers {
+		if strings.Contains(c.containerStats.Name, "rt") {
+			rtContainerUsage += (c.avgCPUPer / float64(100))
+			rtContainer_num++
+		} else {
+			totalCPUUsage += (c.avgCPUPer / float64(100))
+		}
+
+	}
+	remainingCPUUsage = maxCPUUsage - 0.5 - totalCPUUsage // rtContainerUsage assumed 0.5
+
+	for i := 0 ; i<len(containers) ; i++{
+		if strings.Contains(containers[i].containerStats.Name, "rt") {
+			continue
+		}
+		usage := float64(containers[i].maxCPUUsage - ( containers[i].avgCPUPer / float64(100) ))
+		if usage > float(0.02){
+			containers[i].needUsage = (containers[i].avgCPUPer / float64(100)) * float64(1.00) // you can control CPU save
+			containers[i].maxCPUUsage = containers[i].needUsage
+			containers[i].isNeedCPU = false
+			fmt.Println("Noooooooooooooooooooo")
+		}else{
+			containers[i].isNeedCPU = true
+			needCPUContainer_num++
+			fmt.Print("NeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeD")
+
+		}
+
+	}
+
+	allocCPU := float64(remainingCPUUsage) / float64(needCPUContainer_num)
+	for i := 0 ; i < len(containers) ; i++{
+		if containers[i].isNeedCPU{
+			containers[i].needUsage = allocCPU + containers[i].maxCPUUsage
+			containers[i].maxCPUUsage = containers[i].needUsage
+
+		}
+	}
+
+
+
+
 
 
 }
