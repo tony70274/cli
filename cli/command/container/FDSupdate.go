@@ -281,7 +281,7 @@ func checkUpdateInfo (containers []FDSContainer){
 			continue
 		}
 		usage := float64(containers[i].maxCPUUsage - ( containers[i].avgCPUPer / float64(100) ))
-		if usage > float(0.02){
+		if usage > float64(0.02){
 			containers[i].needUsage = (containers[i].avgCPUPer / float64(100)) * float64(1.00) // you can control CPU save
 			containers[i].maxCPUUsage = containers[i].needUsage
 			containers[i].isNeedCPU = false
