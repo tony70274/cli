@@ -150,8 +150,9 @@ func runFDSupdate(dockerCli command.Cli, options *allocOptions) error {
 
 
 	}
+	var count=0
 	for range time.Tick(time.Millisecond * 1000) {
-		var count=0
+
 		for i := 0 ; i < len(cs) ; i++ {
 			fdsContainer[i].previousCPU = fdsContainer[i].containerStats.CPUStats.CPUUsage.TotalUsage
 			fdsContainer[i].previousSystem = fdsContainer[i].containerStats.CPUStats.SystemUsage
@@ -166,6 +167,7 @@ func runFDSupdate(dockerCli command.Cli, options *allocOptions) error {
 		count+=1
 		if count%5 == 0{
 			checkUpdateInfo(fdsContainer)
+			count =0
 		}
 		showInfo(fdsContainer)
 
