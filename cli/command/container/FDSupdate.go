@@ -213,7 +213,7 @@ func initContainerStats(c FDSContainer, cli command.Cli) types.StatsJSON {
 }
 
 func showInfo(containers []FDSContainer) {
-	cleanScreen()
+	//cleanScreen()
 	w := tabwriter.NewWriter(os.Stdout, 12, 1, 3, ' ', 0)
 	fmt.Fprint(w, "Name\tCPU%\tAVG\tQuota\tPeriod\tMax_CPU\n")
 	for i := 0; i < len(containers); i++ {
