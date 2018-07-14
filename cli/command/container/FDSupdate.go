@@ -143,10 +143,16 @@ func runFDSupdate(dockerCli command.Cli, options *allocOptions) error {
 
 	}
 	for range time.Tick(time.Millisecond * 1000) {
-		fmt.Fprint(dockerCli.Out(), "\033[2J")//clean screen
-		fmt.Fprint(dockerCli.Out(), "\033[H")
-		fdsContainer[0].containerStats = initContainerStats(fdsContainer[0],dockerCli)
+		//fmt.Fprint(dockerCli.Out(), "\033[2J")//clean screen
+		//fmt.Fprint(dockerCli.Out(), "\033[H")
+		for i := 0 ; i < len(cs) ; i++ {
+			fdsContainer[i].previousCPU = fdsContainer[i].containerStats.CPUStats.CPUUsage.TotalUsage
+			fdsContainer[i].previousSystem = fdsContainer[i].containerStats.CPUStats.SystemUsage
+			fdsContainer[i].containerStats = initContainerStats(fdsContainer[i],dockerCli)
+			fdsContainer[i].cpuPercent = calculateCPUPercentUnix(fdsContainer[i].previousCPU,fdsContainer[i].previousSystem,&fdsContainer[i].containerStats)
+			}
 		showInfo(fdsContainer)
+
 	}
 	//dockerCli.Client().ContainerStats()
 	/*
@@ -195,11 +201,11 @@ func showInfo(containers []FDSContainer) {
 	w := tabwriter.NewWriter(os.Stdout, 12, 1, 3, ' ', 0)
 	fmt.Fprint(w, "Name\tCPU%\tAVG\tQuota\tPeriod\tMax_CPU\n")
 	for i := 0; i < len(containers); i++ {
-		fmt.Fprintf(w, "%s\t%d\t%d\t%d\n",
+		fmt.Fprintf(w, "%s\t%d\t%d\t%.2f\n",
 			containers[i].containerStats.Name,
 			containers[i].Quota,
 			containers[i].Period,
-			containers[i].containerStats.CPUStats.CPUUsage.TotalUsage,
+			containers[i].cpuPercent,
 		)
 
 	}
