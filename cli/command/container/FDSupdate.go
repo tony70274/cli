@@ -168,6 +168,7 @@ func runFDSupdate(dockerCli command.Cli, options *allocOptions) error {
 		count+=1
 		if count%5 == 0{
 			checkUpdateInfo(fdsContainer)
+			DoUpdate(dockerCli,fdsContainer)
 			count =0
 		}
 		showInfo(fdsContainer)
