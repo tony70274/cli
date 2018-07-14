@@ -21,6 +21,7 @@ import (
 	"os"
 	"time"
 	//"github.com/containerd/cgroups"
+	"os/exec"
 )
 /*
 type updateOptions struct {
@@ -52,9 +53,12 @@ type FDSContainer struct{
 	//resource	container.Resources
 	Period	int64
 	Quota	int64
+	maxCPUUsage float64
 	previousCPU    uint64
 	previousSystem uint64
 	cpuPercent float64
+	historyCPUPer     []float64
+	avgCPU float64
 }
 type allocOptions struct {
 	nFlag int
@@ -136,6 +140,7 @@ func runFDSupdate(dockerCli command.Cli, options *allocOptions) error {
 		tmpContainer.ID = containerInfo.ContainerJSONBase.ID
 		tmpContainer.Period = containerInfo.ContainerJSONBase.HostConfig.Resources.CPUPeriod
 		tmpContainer.Quota = containerInfo.ContainerJSONBase.HostConfig.Resources.CPUQuota
+		tmpContainer.maxCPUUsage = float64(tmpContainer.Quota) / float64(tmpContainer.Period)
 		tmpContainer.containerStats = initContainerStats(tmpContainer,dockerCli)
 		println(tmpContainer.containerStats.PreCPUStats.CPUUsage.TotalUsage)
 		fdsContainer = append(fdsContainer,tmpContainer)
@@ -150,7 +155,12 @@ func runFDSupdate(dockerCli command.Cli, options *allocOptions) error {
 			fdsContainer[i].previousSystem = fdsContainer[i].containerStats.CPUStats.SystemUsage
 			fdsContainer[i].containerStats = initContainerStats(fdsContainer[i],dockerCli)
 			fdsContainer[i].cpuPercent = calculateCPUPercentUnix(fdsContainer[i].previousCPU,fdsContainer[i].previousSystem,&fdsContainer[i].containerStats)
+			fdsContainer[i].historyCPUPer = append(fdsContainer[i].historyCPUPer,fdsContainer[i].cpuPercent)
+			if len(fdsContainer[i].historyCPUPer) >=5 {
+				fdsContainer[i].avgCPU = checkAvgCPU(fdsContainer[i].historyCPUPer)
+				fdsContainer[i].historyCPUPer = nil
 			}
+		}
 		showInfo(fdsContainer)
 
 	}
@@ -197,15 +207,18 @@ func initContainerStats(c FDSContainer, cli command.Cli) types.StatsJSON {
 }
 
 func showInfo(containers []FDSContainer) {
-	//      cleanScreen()
+	cleanScreen()
 	w := tabwriter.NewWriter(os.Stdout, 12, 1, 3, ' ', 0)
 	fmt.Fprint(w, "Name\tCPU%\tAVG\tQuota\tPeriod\tMax_CPU\n")
 	for i := 0; i < len(containers); i++ {
-		fmt.Fprintf(w, "%s\t%d\t%d\t%.2f\n",
+		fmt.Fprintf(w, "%s\t%.2f\t%.2f\t%d\t%d\t%.2f\n",
 			containers[i].containerStats.Name,
+			containers[i].cpuPercent,
+			containers[i].avgCPU,
 			containers[i].Quota,
 			containers[i].Period,
-			containers[i].cpuPercent,
+			containers[i].maxCPUUsage,
+
 		)
 
 	}
@@ -214,6 +227,23 @@ func showInfo(containers []FDSContainer) {
 		log.Fatal(err)
 		return
 	}
+
+}
+
+func cleanScreen() {
+	cmd := exec.Command("clear")
+	cmd.Stdout = os.Stdout
+	cmd.Run()
+
+}
+
+func checkAvgCPU(u []float64)float64{
+	var total=0.0
+	for _, v := range u {
+		total+=v
+	}
+	return (total / float64(5))
+
 
 }
 
